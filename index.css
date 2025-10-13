@@ -1,0 +1,46 @@
+:root {
+
+    --main-color: #F6D267;
+    /* Primär CTA, knappar, highlights - soft yolk färg*/
+    --background: #FAF8F3;
+    /*Neutral bakgrund*/
+    --text-icons: #797953;
+    /*För text, ikoner, naturlig kontrast*/
+    --secondary-color: #d6d6d2;
+    /*Divider, sekundär bakgrund, UI-element*/
+    --accent-color: #BFCBA8;
+    /*Balandsfärg i grafer eller mätare*/
+    --hover: #E3B56F;
+    /*Sekundär ton, hover, progressindikatorer*/
+
+
+    /* === TYPOGRAPHY === */
+    --font-family-base: 'Jost', 'Roboto', sans-serif;
+    /* weight */
+    --font-weight-normal: 400;
+    --font-weight-bold: 700;
+    /* size */
+    --font-size-base: 16px;
+    --font-size-sm: 0.5rem;
+    --font-size-lg: 1.25rem;
+    --font-size-xl: 1.5rem;
+    --font-size-xxl: 2rem;
+    --font-header: 3rem;
+
+    --line-height: 1.5;
+
+
+    /* paddings */
+
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 24px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-family-base);
+}
