@@ -1,14 +1,14 @@
 
 
-const loadingBar = document.getElementById("loader");
-
+const loadingPage = document.querySelector(".loadingPage");
+const mainPage = document.querySelector(".calculatePage");
 
 
 let loadingScreen = setTimeout(function () {
-    loadingBar
+    loadingPage.classList.replace("hiddenFalse", "hiddenTrue");
 
-
+    mainPage.classList.replace("hiddenTrue", "hiddenFalse");
 
 }, 7500)
 
-clearTimeout(loadingScreen)
+// clearTimeout(loadingScreen)
