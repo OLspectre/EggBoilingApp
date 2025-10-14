@@ -104,7 +104,6 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
     position: absolute;
     top: 0;
     left: 0;
@@ -292,12 +291,14 @@ li span {
 
     display: flex;
     flex-direction: column;
-    gap: var(--space-5);
+    gap: calc(var(--space-5) * 2);
+    justify-content: flex-start;
+    padding-top: var(--space-5);
 }
 
 .timer {
     background-color: var(--main-color);
-    width: 100%;
+    width: 322px;
     height: 322px;
     border-radius: 100%;
     text-align: center;
@@ -309,6 +310,10 @@ li span {
 
 .boilOptions {
     width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--space-5) * 1.5);
+    margin: 0 auto;
 }
 
 .boilOptions img {
@@ -343,7 +348,8 @@ footer {
     font-weight: var(--font-weight-bold);
     position: fixed;
     bottom: 0;
-    width: 100vw;
+    left: 0;
+    right: 0;
     padding: var(--space-4);
     place-content: center;
 }
@@ -355,8 +361,10 @@ footer {
     align-items: center;
     gap: 16px;
     border-radius: 20px;
-    border: 4px solid var(--text-icons);
-    border-style: inset;
+    width: fit-content;
+    margin: auto;
+    /* border: 4px solid var(--text-icons);
+    border-style: inset; */
 }
 
 #cook:active {
