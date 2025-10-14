@@ -14,9 +14,28 @@ let loadingScreen = setTimeout(function () {
 
 
 let eggSize;
-let eggCount;
-const sizeContainer = document.querySelector("#haveSizes");
+let eggCount = 1;
+let sizeSelected = false;
+let totalStats;
+console.log(sizeSelected);
 
+
+
+const displayKcal = document.querySelector("#kcalStat");
+const displayProtein = document.querySelector("#protein span");
+const displayFat = document.querySelector("#fat span");
+// const display = document.querySelector("");
+
+
+function updateStats(stats) {
+
+    displayKcal.textContent = stats.kcal;
+    displayProtein.textContent = stats.protein;
+    displayFat.textContent = stats.fat;
+
+}
+
+const sizeContainer = document.querySelector("#haveSizes");
 sizeContainer.addEventListener("click", (e) => {
     if (!e.target.matches("button")) return
 
@@ -24,11 +43,52 @@ sizeContainer.addEventListener("click", (e) => {
     buttons.forEach(btn => btn.classList.remove("marked"));
 
     e.target.classList.add("marked");
+    readyButton.classList.add("ready");
+
 
     eggSize = e.target.textContent;
 
+    sizeSelected = true;
     console.log(eggSize);
+
+    totalStats = getTotalEggStats(eggSize, eggCount).total;
+    updateStats(totalStats);
 })
+
+const eggCountContainer = document.getElementById("eggCount");
+
+eggCountContainer.addEventListener("click", (e) => {
+    if (!e.target.matches("button")) return
+
+    const displayEggCount = document.querySelector("#eggCount p");
+
+    if (e.target.textContent === "+") {
+        eggCount++
+    } else {
+        eggCount--
+    }
+    console.log(`Number of eggs:`, eggCount);
+
+    displayEggCount.textContent = eggCount;
+    totalStats = getTotalEggStats(eggSize, eggCount).total;
+    updateStats(totalStats);
+
+});
+
+const readyButton = document.querySelector(".readyButton");
+readyButton.addEventListener("click", () => {
+    console.log(sizeSelected);
+
+    if (!sizeSelected) {
+        alert("Please select the size of your eggs")
+    } else {
+
+    }
+
+})
+
+
+
 
 
 
@@ -78,9 +138,9 @@ function getTotalEggStats(size, count) {
         size,
         count,
         total: {
-            kcal: egg.kcal * count,
-            protein: egg.protein * count,
-            fat: egg.fat * count,
+            kcal: Math.floor(egg.kcal * count),
+            protein: Math.floor(egg.protein * count),
+            fat: Math.floor(egg.fat * count),
             B2: egg.B2 * count,
             selenium: egg.selenium * count,
             vitaminD: egg.vitaminD * count,
@@ -97,16 +157,5 @@ function calculateDRI(nutrients) {
         iron: Math.floor(nutrients.iron / DRI.iron * 100)
     }
 }
-
-// const kcal
-// const protein = 
-
-const totalStats = getTotalEggStats("M", 5).total;
-
-console.log(totalStats.protein);
-
-console.log(totalStats);
-console.log(calculateDRI(totalStats));
-
 
 

@@ -18,7 +18,7 @@
 
 
 
-    <section class="loadingPage hiddenTrue">
+    <section class="loadingPage hiddenFalse">
 
         <div id="logo">
             <h1 data-text="Eggbro">Eggbro</h1>
@@ -44,19 +44,19 @@
     </section>
 
 
-    <section class="calculatePage hiddenFalse">
+    <section class="calculatePage hiddenTrue">
 
         <div class="stats" id="bigStats">
             <img src="images/3eggs.png" alt="">
             <div id="kcal" class="yellowImportant">
-                <p id="kcalstat">455</p>
+                <p id="kcalStat">-</p>
                 <span>kcal</span>
 
             </div>
 
             <div id="hasPF">
-                <div id="protein">Protein: 40</div>
-                <div id="fat">Fat: 15</div>
+                <div id="protein">Protein: <span>-</span></div>
+                <div id="fat">Fat: <span>-</span></div>
             </div>
         </div>
 
@@ -92,11 +92,10 @@
                 <p>1</p>
                 <button>+</button>
             </div>
-            <button>S</button>
         </div>
 
         <footer>
-            <button type="button">READY</button>
+            <button class="readyButton" type="button">READY</button>
         </footer>
     </section>
     <section class="timerPage">

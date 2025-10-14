@@ -280,3 +280,8 @@ li span {
 .marked {
     background-color: var(--main-color);
 }
+
+.ready {
+    background-color: var(--main-color);
+    font-weight: var(--font-weight-bold);
+}
