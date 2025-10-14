@@ -104,7 +104,7 @@ section {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    /* align-items: center; */
+    align-items: center;
     position: absolute;
     top: 0;
     left: 0;
@@ -168,10 +168,6 @@ section {
     line-height: calc(var(--ight) * 1.5);
 }
 
-
-.timerPage {
-    display: none;
-}
 
 .hiddenTrue {
     opacity: 0;
@@ -288,4 +284,23 @@ li span {
 .ready {
     background-color: var(--main-color);
     font-weight: var(--font-weight-bold);
+}
+
+
+/* TIMER PAGE*/
+/* .timerPage {
+
+
+} */
+
+.timer {
+    background-color: var(--main-color);
+    width: 250px;
+    height: 250px;
+    border-radius: 100%;
+    text-align: center;
+    place-content: center;
+    font-size: var(--font-header);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.5rem
 }

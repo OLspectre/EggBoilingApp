@@ -2,6 +2,7 @@
 
 const loadingPage = document.querySelector(".loadingPage");
 const mainPage = document.querySelector(".calculatePage");
+const timerPage = document.querySelector(".timerPage");
 
 
 let loadingScreen = setTimeout(function () {
@@ -19,9 +20,6 @@ let sizeSelected = false;
 let totalStats;
 let microStats;
 let boilType;
-
-let baseCookTime = eggCookTimes[eggSize][boilType]
-console.log(sizeSelected);
 
 
 
@@ -102,7 +100,9 @@ readyButton.addEventListener("click", () => {
     if (!sizeSelected) {
         alert("Please select the size of your eggs")
     } else {
+        mainPage.classList.replace("hiddenFalse", "hiddenTrue");
 
+        timerPage.classList.replace("hiddenTrue", "hiddenFalse");
     }
 
 })
@@ -182,4 +182,6 @@ function calculateDRI(nutrients) {
     }
 }
 
+// let baseCookTime = eggCookTimes[eggSize][boilType]
+// console.log(sizeSelected);
 
