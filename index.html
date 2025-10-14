@@ -79,9 +79,11 @@
 
         <div class="options" id="haveSizes">
             <h3>Egg<span>Size</span></h3>
-            <button>S</button>
-            <button>M</button>
-            <button>L</button>
+            <div> <button>S</button>
+                <button>M</button>
+                <button>L</button>
+            </div>
+
         </div>
         <div class="options">
             <h3>Egg<span>Count</span></h3>
@@ -93,7 +95,7 @@
         </div>
 
         <footer>
-            <button class="readyButton" type="button">READY</button>
+            <div class="readyButton">READY</div>
         </footer>
     </section>
 
@@ -103,23 +105,32 @@
 
         <div class="boilOptions">
             <div id="soft" class="soft boilOption">
-                <img src="images/softBoiled.png" alt="">
-                <p>Soft</p>
-                <p>Boiled</p>
+                <img class="soft" src="images/softBoiled.png" alt="">
+                <p class="soft">Soft</p>
+                <p class="soft">Boiled</p>
 
             </div>
-            <div class="medium boilOption">
-                <img src="images/medBoiled.png" alt="">
-                <p>Medium <br>Boiled</p>
+
+            <img class="hiddenTrue" id="boilingEggImage" src="images/startCook1.png" alt="">
+
+            <div id="med" class="med boilOption">
+                <img class="med" src="images/medBoiled.png" alt="">
+                <p class="med">Medium </p>
+                <p class="med">Boiled</p>
             </div>
-            <div class="hard boilOption">
-                <img src="images/hardBoiled.png" alt="">
-                <p>Hard <br>Boiled</p>
+
+            <div id="hard" class="hard boilOption hiddenfalse">
+                <img class="hard" src="images/hardBoiled.png" alt="">
+                <p class="hard">Hard
+                <p class="hard">Boiled</p>
+
             </div>
         </div>
 
         <footer>
-            <div id="cook" class="cook">Let him cook <img src="images/power-button-svg.svg" alt=""></div>
+            <div id="cook" class="cook">
+                Let him cook <img src="images/power-button.svg" alt="">
+            </div>
         </footer>
     </section>
 
