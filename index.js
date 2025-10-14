@@ -12,41 +12,21 @@ let loadingScreen = setTimeout(function () {
 }, 7500)
 
 
-const sizeContainer = document.querySelector("#haveSizes");
 
 let eggSize;
 let eggCount;
+const sizeContainer = document.querySelector("#haveSizes");
 
 sizeContainer.addEventListener("click", (e) => {
+    if (!e.target.matches("button")) return
 
     const buttons = document.querySelectorAll("#haveSizes button")
+    buttons.forEach(btn => btn.classList.remove("marked"));
 
-    if (e.target.textContent === "S") {
-        console.log("funkar S");
-        for (let btn of buttons) {
-            if (btn.classList.contains("marked")) btn.classList.toggle("marked");
-        }
-        e.target.classList.toggle("marked");
-        eggSize = "S";
+    e.target.classList.add("marked");
 
+    eggSize = e.target.textContent;
 
-    }
-    if (e.target.textContent === "M") {
-        console.log("funkar M");
-        for (let btn of buttons) {
-            if (btn.classList.contains("marked")) btn.classList.toggle("marked");
-        }
-        e.target.classList.toggle("marked");
-        eggSize = "M";
-    }
-    if (e.target.textContent === "L") {
-        console.log("funkar L");
-        for (let btn of buttons) {
-            if (btn.classList.contains("marked")) btn.classList.toggle("marked");
-        }
-        e.target.classList.toggle("marked");
-        eggSize = "L";
-    }
     console.log(eggSize);
 })
 
