@@ -28,7 +28,7 @@
     --font-size-xxl: 2.25rem;
     --font-header: 3rem;
 
-    --ight: 1.5;
+    --line-height: 1.5;
 
 
     /* paddings */
@@ -212,7 +212,7 @@ section {
 #smallStats {
     background-color: var(--secondary-color);
     border-radius: 20px;
-
+    width: fit-content;
     display: flex;
     gap: 32px;
     padding: var(--space-5);
@@ -271,7 +271,11 @@ p {
 
 ul {
     list-style: none;
+    gap: 10px;
+    line-height: var(--line-height);
 }
+
+
 
 li span {
     font-weight: var(--font-weight-bold);

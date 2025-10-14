@@ -17,6 +17,10 @@ let eggSize;
 let eggCount = 1;
 let sizeSelected = false;
 let totalStats;
+let microStats;
+let boilType;
+
+let baseCookTime = eggCookTimes[eggSize][boilType]
 console.log(sizeSelected);
 
 
@@ -24,15 +28,23 @@ console.log(sizeSelected);
 const displayKcal = document.querySelector("#kcalStat");
 const displayProtein = document.querySelector("#protein span");
 const displayFat = document.querySelector("#fat span");
-// const display = document.querySelector("");
+
+let driItems = document.querySelectorAll("li span");
+console.log(driItems);
 
 
 function updateStats(stats) {
+    const values = Object.values(microStats);
 
     displayKcal.textContent = stats.kcal;
     displayProtein.textContent = stats.protein;
     displayFat.textContent = stats.fat;
 
+    console.log(values);
+    for (let i = 0; i < driItems.length; i++) {
+        console.log(values[i]);
+        driItems[i].textContent = `${values[i]}%`
+    }
 }
 
 const sizeContainer = document.querySelector("#haveSizes");
@@ -52,6 +64,10 @@ sizeContainer.addEventListener("click", (e) => {
     console.log(eggSize);
 
     totalStats = getTotalEggStats(eggSize, eggCount).total;
+    console.log(totalStats);
+    microStats = calculateDRI(totalStats);
+    console.log(microStats);
+
     updateStats(totalStats);
 })
 
@@ -71,7 +87,11 @@ eggCountContainer.addEventListener("click", (e) => {
 
     displayEggCount.textContent = eggCount;
     totalStats = getTotalEggStats(eggSize, eggCount).total;
+
+    microStats = calculateDRI(totalStats);
+
     updateStats(totalStats);
+
 
 });
 
@@ -88,9 +108,7 @@ readyButton.addEventListener("click", () => {
 })
 
 
-
-
-
+// EGG STATS AND CALCULATIONS
 
 const eggData = {
     S: {
@@ -121,6 +139,12 @@ const eggData = {
         iron: 1.2
     }
 };
+
+const eggCookTimes = {
+    S: { soft: 2700, medium: 3600, hard: 4800 },
+    M: { soft: 3000, medium: 3900, hard: 5100 },
+    L: { soft: 3300, medium: 4200, hard: 5400 }
+}
 
 const DRI = {
     B2: 1.4,        // mg
