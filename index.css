@@ -185,7 +185,12 @@ section {
 
 .calculatePage {
     gap: 20px;
+    margin-top: -40px;
     justify-content: center;
+}
+
+.calculatePage h3 {
+    margin-bottom: 8px;
 }
 
 
@@ -227,14 +232,6 @@ section {
 
 }
 
-
-
-#eggCount {
-    display: flex;
-    width: 30%;
-    justify-content: space-between;
-}
-
 #hasPF {
     width: 100%;
     display: flex;
@@ -270,8 +267,6 @@ ul {
     line-height: var(--line-height);
 }
 
-
-
 li span {
     font-weight: var(--font-weight-bold);
 }
@@ -282,6 +277,7 @@ div.marked {
 
 .marked {
     border: 2px solid var(--main-color);
+    font-weight: var(--font-weight-bold);
 
 }
 
@@ -295,6 +291,19 @@ div.marked {
 }
 
 #haveSizes button {
+    padding: var(--space-1) var(--space-5);
+    background-color: transparent;
+    border-radius: 20px;
+    border-style: solid;
+}
+
+#eggCount {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+}
+
+#eggCount button {
     padding: var(--space-1) var(--space-5);
     background-color: transparent;
     border-radius: 20px;
@@ -317,7 +326,6 @@ div.marked {
 
 /* TIMER PAGE*/
 .timerPage {
-
     display: flex;
     flex-direction: column;
     gap: calc(var(--space-5) * 1.5);

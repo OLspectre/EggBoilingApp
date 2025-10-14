@@ -79,8 +79,11 @@ eggCountContainer.addEventListener("click", (e) => {
 
     if (e.target.textContent === "+") {
         eggCount++
+    } else if (eggCount === 1) {
+        // KNAPP KSA EJ GÅ ATT TRYCKA PÅ
     } else {
         eggCount--
+
     }
     console.log(`Number of eggs:`, eggCount);
 
