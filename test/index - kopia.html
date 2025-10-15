@@ -18,7 +18,7 @@
 
 
 
-    <section class="loadingPage hiddenFalse">
+    <section class="loadingPage hiddenTrue">
 
         <div id="logo">
             <h1 data-text="Eggbro">Eggbro</h1>
@@ -43,13 +43,13 @@
 
     </section>
 
-    <section class="calculatePage hiddenTrue">
+    <section class="calculatePage hiddenFalse">
 
         <div class="stats" id="bigStats">
             <img src="images/3eggs.png" alt="">
             <div id="kcal" class="yellowImportant">
-                <p id="kcalStat">- <span>kcal</span></p>
-
+                <p id="kcalStat">-</p>
+                <span>kcal</span>
 
             </div>
 
@@ -76,25 +76,23 @@
         </div>
 
 
-        <div class="hasOptions">
-            <div class="options" id="haveSizes">
-                <h3>Egg<span>Size</span></h3>
-                <div> <button type="button">S</button>
-                    <button type="button">M</button>
-                    <button type="button">L</button>
-                </div>
 
+        <div class="options" id="haveSizes">
+            <h3>Egg<span>Size</span></h3>
+            <div> <button>S</button>
+                <button>M</button>
+                <button>L</button>
             </div>
-            <div class="options">
-                <h3>Egg<span>Count</span></h3>
-                <div id="eggCount">
-                    <button type="button">-</button>
-                    <p>1</p>
-                    <button type="button">+</button>
-                </div>
+
+        </div>
+        <div class="options">
+            <h3>Egg<span>Count</span></h3>
+            <div id="eggCount">
+                <button>-</button>
+                <p>1</p>
+                <button>+</button>
             </div>
         </div>
-
 
         <footer>
             <div class="readyButton">READY</div>
@@ -113,7 +111,7 @@
 
             </div>
 
-            <img class="hiddenTrue" id="boilingEggImage" src="images/startCookAnimated.gif" alt="">
+            <img class="hiddenTrue" id="boilingEggImage" src="images/startCook1.png" alt="">
 
             <div id="med" class="med boilOption">
                 <img class="med" src="images/medBoiled.png" alt="">
@@ -136,34 +134,7 @@
         </footer>
     </section>
 
-    <!-- POPUP FOR CANCEL -->
-    <div id="cancelPopup" class="popup hiddenTrue">
-        <div class="popupContent">
-            <p>Are you sure you want to cancel?</p>
-            <div class="popupButtons">
-                <button type="button" id="confirmCancel">Yes</button>
-                <button type="button" id="denyCancel">No</button>
-            </div>
-        </div>
-    </div>
-    <!-- POPUP FOR TYPE OF BOIL -->
-    <div id="boilTypePopup" class="popup hiddenTrue">
-        <div class="popupContent">
-            <p>Please select a boil type before starting.</p>
-            <div class="popupButtons">
-                <button type="button" id="closeBoilPopup">OK</button>
-            </div>
-        </div>
-    </div>
-    <!-- POPUP FOR SIZE SELECTION -->
-    <div id="sizeTypePopup" class="popup hiddenTrue">
-        <div class="popupContent">
-            <p>Please select desired size for your eggs.</p>
-            <div class="popupButtons">
-                <button type="button" id="closeSizePopup">OK</button>
-            </div>
-        </div>
-    </div>
+
 
     <script src="index.js"></script>
 </body>

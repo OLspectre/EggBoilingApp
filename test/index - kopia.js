@@ -22,19 +22,6 @@ let microStats;
 let boilType;
 let duration;
 
-let ms = 100;
-
-let timerContent = document.querySelector(".timer");
-
-let timerStartButton = document.querySelector(".cook");
-let timerPauseButton = document.querySelector(".pause");
-
-let running = false;
-const cancelPopup = document.getElementById("cancelPopup");
-const confirmCancel = document.getElementById("confirmCancel");
-const denyCancel = document.getElementById("denyCancel");
-
-
 
 
 const displayKcal = document.querySelector("#kcalStat");
@@ -48,9 +35,9 @@ console.log(driItems);
 function updateStats(stats) {
     const values = Object.values(microStats);
 
-    displayKcal.innerHTML = `${stats.kcal} <span>kcal</span>`;
-    displayProtein.textContent = stats.protein + "g";
-    displayFat.textContent = stats.fat + "g";
+    displayKcal.textContent = stats.kcal;
+    displayProtein.textContent = stats.protein;
+    displayFat.textContent = stats.fat;
 
     console.log(values);
     for (let i = 0; i < driItems.length; i++) {
@@ -67,7 +54,7 @@ sizeContainer.addEventListener("click", (e) => {
     buttons.forEach(btn => btn.classList.remove("marked"));
 
     e.target.classList.add("marked");
-    readyButton.classList.add("marked");
+    readyButton.classList.add("ready");
 
 
     eggSize = e.target.textContent;
@@ -110,15 +97,12 @@ eggCountContainer.addEventListener("click", (e) => {
 
 });
 
-const sizeTypePopup = document.getElementById("sizeTypePopup");
-const closeSizePopup = document.getElementById("closeSizePopup");
-
 const readyButton = document.querySelector(".readyButton");
 readyButton.addEventListener("click", () => {
     console.log(sizeSelected);
 
     if (!sizeSelected) {
-        sizeTypePopup.classList.replace("hiddenTrue", "hiddenFalse");
+        alert("Please select the size of your eggs")
     } else {
         mainPage.classList.replace("hiddenFalse", "hiddenTrue");
 
@@ -161,9 +145,9 @@ const eggData = {
 };
 
 const eggCookTimes = {
-    S: { soft: 270000, medium: 360000, hard: 480000 },
-    M: { soft: 300000, medium: 390000, hard: 510000 },
-    L: { soft: 330000, medium: 420000, hard: 540000 }
+    S: { soft: 270000, medium: 36000, hard: 48000 },
+    M: { soft: 300000, medium: 39000, hard: 51000 },
+    L: { soft: 330000, medium: 42000, hard: 54000 }
 }
 
 const DRI = {
@@ -202,8 +186,13 @@ function calculateDRI(nutrients) {
     }
 }
 
+// let baseCookTime = eggCookTimes["S"]["soft"]
+// console.log(sizeSelected);
+
 
 document.querySelector(".boilOptions").addEventListener("click", function (e) {
+    if (boilType) return;
+
     const markedElements = document.querySelectorAll(".marked")
     markedElements.forEach(btn => btn.classList.remove("marked"));
 
@@ -211,71 +200,54 @@ document.querySelector(".boilOptions").addEventListener("click", function (e) {
         console.log("soft selected");
         document.getElementById("soft").classList.add("marked");
         boilType = "soft";
-
-        let startDuration = eggCookTimes["S"][boilType];
-        duration = startDuration
-        duration = duration - 100;
-        timerContent.textContent = `${msToTime(duration)}`
-
     }
     if (e.target.classList.contains("med")) {
         console.log("medium selected");
         document.getElementById("med").classList.add("marked");
 
         boilType = "medium";
-        let startDuration = eggCookTimes["S"][boilType];
-
-        duration = startDuration
-        duration = duration - 100;
-        timerContent.textContent = `${msToTime(duration)}`
     }
     if (e.target.classList.contains("hard")) {
         console.log("hard selected");
         document.getElementById("hard").classList.add("marked");
 
         boilType = "hard";
-
-        let startDuration = eggCookTimes["S"][boilType];
-        duration = startDuration
-        duration = duration - 100;
-        timerContent.textContent = `${msToTime(duration)}`
-
     } else {
         return
     }
-
 });
 
 
+let ms = 100;
+
+let timerContent = document.querySelector(".timer");
+
+let timerStartButton = document.querySelector(".cook");
+let timerPauseButton = document.querySelector(".pause");
+
+let running = false;
 
 
 
 timerStartButton.addEventListener("click", function () {
 
     if (timerStartButton.classList.contains("pressToCancel")) {
-        cancelPopup.classList.replace("hiddenTrue", "hiddenFalse");
-    }
-    if (!boilType) {
-        boilTypePopup.classList.replace("hiddenTrue", "hiddenFalse");
-        return
+        alert("Are you sure you want to cancel??")
+        // showPopup()
     }
 
-    if (running && boilType) return
+
+
+
+    if (!boilType) return
     running = true;
-    let startDuration = eggCookTimes["S"][boilType];
-    duration = startDuration
-
-    console.log(boilType);
-    console.log(duration);
+    duration = eggCookTimes["S"][boilType];
 
     let timerId = setInterval(function () {
-        if (duration < (startDuration * 0.5)) {
-            document.querySelector("#boilingEggImage").src = "images/startCookAnimated.gif";
-        }
         if (running) {
-            if (duration <= 0) {
+            if (duration <= 0) { // Bra och viktigt att ha if-sats först så att allt visas.
                 console.log(`Timer with id ${timerId} finished`);
-                timerContent.textContent = `*Alarm noise*`;
+                timerContent.textContent = `BEEP BEEP`;
                 clearInterval(timerId)
             }
             // console.log(duration);
@@ -295,7 +267,6 @@ timerStartButton.addEventListener("click", function () {
     timerStartButton.classList.add("pressToCancel");
 
 
-
     for (let element of document.querySelectorAll("div.boilOption")) {
         element.classList.add("hiddenTrue");
     }
@@ -303,22 +274,22 @@ timerStartButton.addEventListener("click", function () {
 
 });
 
-confirmCancel.addEventListener("click", () => {
-    cancelPopup.classList.replace("hiddenFalse", "hiddenTrue");
-    window.location.reload()
-});
+// if (duration)
 
-denyCancel.addEventListener("click", () => {
-    cancelPopup.classList.replace("hiddenFalse", "hiddenTrue");
-});
 
-closeBoilPopup.addEventListener("click", () => {
-    boilTypePopup.classList.replace("hiddenFalse", "hiddenTrue");
-});
+// timerCancelButton.addEventListener("click", function () {
+//     console.log(`Cancel the timer with ID ${timerId}`);
+//     clearInterval(timerId);
+//     timerContent.remove;
+//     timerContent.textContent = ""
+//     timerContent.classList.remove("timer")
+//     console.log(timerContent);
+// });
 
-closeSizePopup.addEventListener("click", () => {
-    sizeTypePopup.classList.replace("hiddenFalse", "hiddenTrue");
-});
+if (duration < (duration * 0.5)) {
+    document.querySelector("#boilingEggImage").src = "images/midCook3.png";
+
+}
 
 function msToTime(ms) {
     let s = ms / 1000;
@@ -326,13 +297,9 @@ function msToTime(ms) {
     let minutes = Math.trunc(m);
     let seconds = Math.round((m % 1) * 60);
 
-    if (seconds === 60) {
-        minutes += 1;
-        seconds = 0;
-    }
-    const minString = minutes < 10 ? `0${minutes}` : `${minutes}`;
-    const secString = seconds < 10 ? `0${seconds}` : `${seconds}`;
+    // if (minutes < 10) return `0${minutes}:${seconds}`
 
-    return `${minString}:${secString}`;
+    if (seconds < 10) return `0${minutes}:${seconds}0`
 
+    return `0${minutes}:${seconds}`
 }
