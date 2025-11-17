@@ -1,7 +1,7 @@
 :root {
     --main-color: #F6D267;
     --background: #FAF8F3;
-    --text-icons: #3D3C24;
+    --text-icons: #797953;
     --secondary-color: #d6d6d2;
     --accent-color: #BFCBA8;
     --hover: #E3B56F;
@@ -182,36 +182,31 @@ section {
 }
 
 #bigStats {
-    background-color: var(--secondary-color);
+    background-color: var(--main-color);
     position: relative;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: var(--space-4);
-    padding: var(--space-4);
+    gap: var(--space-5);
+    padding: var(--space-5);
     font-size: var(--font-size-base);
+    color: var(--text-icons);
+    margin-bottom: var(--space-4);
 }
 
 #bigStats img {
-    width: 40%;
+    width: 44%;
     position: absolute;
-    top: -40px;
+    top: -63px;
     left: 50%;
     transform: translateX(-50%);
 }
 
 #kcal {
-    background: var(--main-color);
     font-weight: var(--font-weight-bold);
     font-size: var(--font-size-xl);
-    width: 140px;
-    height: 140px;
-    border-radius: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    margin-top: var(--space-8);
 }
 
 #hasPF {
@@ -222,27 +217,19 @@ section {
 }
 
 #hasPF div {
-    background-color: var(--main-color);
     padding: var(--space-2);
+}
 
+#hasPF span {
+    font-weight: var(--font-weight-bold);
 }
 
 #smallStats {
-    background-color: var(--secondary-color);
-    border-radius: 20px;
     width: 100%;
     display: flex;
     gap: var(--space-4);
-    padding: var(--space-4);
     font-size: var(--font-size-base);
 }
-
-
-
-/* #bigStats span {
-    font-size: var(--font-size-xl);
-} */
-
 
 ul {
     list-style: none;
@@ -254,62 +241,84 @@ li span {
     font-weight: var(--font-weight-bold);
 }
 
-
-
-.options {
-    width: 50%;
-}
-
 .hasOptions {
     display: flex;
     flex-direction: column;
-    gap: var(--space-2);
+    gap: var(--space-5);
 }
 
 #haveSizes>div {
     display: flex;
     justify-content: space-between;
+    max-width: 65%;
 }
 
-#haveSizes button,
-#eggCount button {
-    padding: var(--space-1) var(--space-3);
+#haveSizes button {
+    padding: var(--space-1) var(--space-5);
     background-color: transparent;
     border-radius: 20px;
     border-style: solid;
     font-size: var(--font-size-base);
     font-style: normal;
-    /* border: 2px solid var(--secondary-color); */
 }
 
 #eggCount {
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    /* width: 100%; */
+    background-color: #FAF8F3;
+    border: 2px solid #d6d6d2;
+
+    max-width: 125px;
+    height: 36px;
+    box-sizing: border-box;
 }
+
+.eggCountBTN {
+    background: none;
+    border: none;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: #3D3C24;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    /* gör knappen rund */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+}
+
+#eggcount span {
+    font-size: 1.1rem;
+    color: #3D3C24;
+    pointer-events: none;
+    user-select: none;
+}
+
+
 
 .readyButton {
     border: 2px solid var(--secondary-color);
     width: fit-content;
-    padding: var(--space-1) var(--space-3);
+    padding: var(--space-1) var(--space-4);
     margin: auto;
-    /* background: var(--background); */
     border-radius: 20px;
+    color: var(--text-icons);
 }
 
 .timerPage {
     display: flex;
     flex-direction: column;
     gap: var(--space-4);
-    justify-content: flex-start;
+    justify-content: center;
     padding-top: var(--space-4);
+    color: var(--text-icons);
 }
 
 .timer {
-    background-color: var(--main-color);
-    width: 220px;
-    height: 220px;
-    border-radius: 100%;
     text-align: center;
     place-content: center;
     font-size: var(--font-size-xxl);
@@ -317,6 +326,7 @@ li span {
     letter-spacing: 0.2rem;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 50px;
 }
 
 .boilOptions {
@@ -329,37 +339,34 @@ li span {
 }
 
 .boilOptions img {
-    width: 115px;
-    position: absolute;
+    width: 80px;
     right: 59px;
     bottom: -20px;
 }
+
+.boilOption {
+    display: flex;
+    align-items: center;
+    position: relative;
+    margin-bottom: var(--space-4);
+    font-size: var(--font-size-base);
+    background-color: var(--secondary-color);
+    border-radius: 16px;
+    padding: 0 var(--space-4) 0 0;
+    /* width: 50%; */
+    margin: var(--space-2) auto;
+    min-width: 60%;
+}
+
 
 img.hard,
 img.med {
     bottom: -24px;
 }
 
-.boilOption {
-    position: relative;
-    margin-bottom: var(--space-4);
-    font-size: var(--font-size-base);
-    background-color: var(--secondary-color);
-    border-radius: 16px;
-    padding: var(--space-2) var(--space-4);
-    width: 50%;
-    margin: var(--space-6) auto;
-}
-
-
-.boilOption p {
-    margin-left: auto;
-    width: fit-content;
-}
-
 #boilingEggImage {
     position: absolute;
-    top: -113px;
+    top: 0px;
     left: 0;
     width: 100%;
 }
@@ -375,26 +382,31 @@ footer {
     place-content: center;
 }
 
+.calculatePage footer {
+    bottom: -25px;
+}
+
 #cook {
     background-color: var(--main-color);
-    padding: var(--space-2) var(--space-3);
+    color: var(--text-icons);
+    padding: var(--space-2) var(--space-4);
     display: flex;
     align-items: center;
     gap: var(--space-2);
     border-radius: 20px;
     width: fit-content;
     margin: auto;
+    font-weight: var(--font-weight-bold);
 }
 
-#cook:active {
+/* #cook:active {
     border: initial;
-}
+} */
 
 footer img {
     width: 36px;
+    color: var(--text-icons);
 }
-
-
 
 .readyButton:active {
     background-color: var(--main-color);
@@ -408,7 +420,6 @@ footer img {
     right: 0;
     bottom: 0;
     background-color: rgba(250, 248, 243, 0.95);
-    /* var(--background) med transparens */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -422,7 +433,7 @@ footer img {
     width: 80%;
     max-width: 300px;
     text-align: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
     font-size: var(--font-size-base);
     color: var(--text-icons);
 }
@@ -449,6 +460,34 @@ footer img {
 #sizeTypePopup .popupButtons {
     justify-content: center;
 }
+
+
+#donePopup .popupContent {
+    animation: popIn 0.4s ease;
+}
+
+#donePopup img {
+    margin-bottom: -17px;
+    margin-top: -46px;
+}
+
+#confirmDone {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
 
 .marked {
     border: 2px solid var(--main-color);

@@ -88,7 +88,7 @@ const eggCountContainer = document.getElementById("eggCount");
 eggCountContainer.addEventListener("click", (e) => {
     if (!e.target.matches("button")) return
 
-    const displayEggCount = document.querySelector("#eggCount p");
+    const displayEggCount = document.querySelector("#eggCount span");
 
     if (e.target.textContent === "+") {
         eggCount++
@@ -101,12 +101,16 @@ eggCountContainer.addEventListener("click", (e) => {
     console.log(`Number of eggs:`, eggCount);
 
     displayEggCount.textContent = eggCount;
-    totalStats = getTotalEggStats(eggSize, eggCount).total;
 
-    microStats = calculateDRI(totalStats);
+    if (!eggSize) {
+        return
+    } else {
+        totalStats = getTotalEggStats(eggSize, eggCount).total;
 
-    updateStats(totalStats);
+        microStats = calculateDRI(totalStats);
 
+        updateStats(totalStats);
+    }
 
 });
 
@@ -205,14 +209,16 @@ function calculateDRI(nutrients) {
 
 document.querySelector(".boilOptions").addEventListener("click", function (e) {
     const markedElements = document.querySelectorAll(".marked")
-    markedElements.forEach(btn => btn.classList.remove("marked"));
+    // markedElements.forEach(btn => btn.classList.remove("marked"));
 
     if (e.target.classList.contains("soft")) {
         console.log("soft selected");
+        markedElements.forEach(btn => btn.classList.remove("marked"));
+
         document.getElementById("soft").classList.add("marked");
         boilType = "soft";
 
-        let startDuration = eggCookTimes["S"][boilType];
+        let startDuration = eggCookTimes[eggSize][boilType];
         duration = startDuration
         duration = duration - 100;
         timerContent.textContent = `${msToTime(duration)}`
@@ -220,6 +226,8 @@ document.querySelector(".boilOptions").addEventListener("click", function (e) {
     }
     if (e.target.classList.contains("med")) {
         console.log("medium selected");
+        markedElements.forEach(btn => btn.classList.remove("marked"));
+
         document.getElementById("med").classList.add("marked");
 
         boilType = "medium";
@@ -231,6 +239,8 @@ document.querySelector(".boilOptions").addEventListener("click", function (e) {
     }
     if (e.target.classList.contains("hard")) {
         console.log("hard selected");
+        markedElements.forEach(btn => btn.classList.remove("marked"));
+
         document.getElementById("hard").classList.add("marked");
 
         boilType = "hard";
@@ -267,16 +277,38 @@ timerStartButton.addEventListener("click", function () {
 
     console.log(boilType);
     console.log(duration);
-
     let timerId = setInterval(function () {
-        if (duration < (startDuration * 0.5)) {
-            document.querySelector("#boilingEggImage").src = "images/startCookAnimated.gif";
+        if (duration < (startDuration * 0.94)) {
+            document.querySelector("#boilingEggImage").src = "images/midCookAnimated.gif";
+        }
+        if (duration < (startDuration * 0.9)) {
+            document.querySelector("#boilingEggImage").src = "images/endCookAnimated.gif";
         }
         if (running) {
             if (duration <= 0) {
                 console.log(`Timer with id ${timerId} finished`);
                 timerContent.textContent = `*Alarm noise*`;
                 clearInterval(timerId)
+
+                // Visa popup
+                const donePopup = document.getElementById("donePopup");
+                donePopup.classList.remove("hiddenTrue");
+
+                // const eggGif = document.getElementById("eggFinishedIMG");
+                // if (eggGif) eggGif.src = "images/endCook2.png";
+
+                // Spela kort ljud
+                const sound = new Audio("egg_done.mp3");
+                sound.play();
+
+                const confirmDone = document.getElementById("confirmDone");
+                confirmDone.addEventListener("click", () => {
+                    console.log("Loading app again...");
+
+                    window.location.reload()
+                });
+
+
             }
             // console.log(duration);
 
@@ -291,7 +323,6 @@ timerStartButton.addEventListener("click", function () {
     console.log(`Started a timer with ID ${timerId}`);
 
     timerStartButton.textContent = "Cancel progress";
-    timerStartButton.style.backgroundColor = "tomato";
     timerStartButton.classList.add("pressToCancel");
 
 

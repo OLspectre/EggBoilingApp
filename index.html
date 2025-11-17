@@ -18,11 +18,11 @@
 
 
 
-    <section class="loadingPage hiddenFalse">
+    <section class="loadingPage hiddenTrue">
 
         <div id="logo">
             <h1 data-text="Eggbro">Eggbro</h1>
-            <img src="images/eggBroLoading.png" alt="">
+            <img src="images/eggBroLoading.png" alt="eggBro figure lifting dumbell">
         </div>
 
         <!-- <div> -->
@@ -46,35 +46,32 @@
     <section class="calculatePage hiddenTrue">
 
         <div class="stats" id="bigStats">
-            <img src="images/3eggs.png" alt="">
-            <div id="kcal" class="yellowImportant">
+            <img src="images/3eggs.png" alt="3 eggs with protein, kcal and fat">
+            <div id="kcal">
                 <p id="kcalStat">- <span>kcal</span></p>
-
-
             </div>
 
             <div id="hasPF">
                 <div id="protein">Protein: <span>-</span></div>
                 <div id="fat">Fat: <span>-</span></div>
             </div>
+
+            <div class="stats" id="smallStats">
+                <ul>
+                    <li>B2</li>
+                    <li>Selen</li>
+                    <li>Vitamin D</li>
+                    <li>Järn</li>
+                </ul>
+
+                <ul>
+                    <li><span>-</span> DRI</li>
+                    <li><span>-</span> DRI</li>
+                    <li><span>-</span> DRI</li>
+                    <li><span>-</span> DRI</li>
+                </ul>
+            </div>
         </div>
-
-        <div class="stats" id="smallStats">
-            <ul>
-                <li>B2</li>
-                <li>Selen</li>
-                <li>Vitamin D</li>
-                <li>Järn</li>
-            </ul>
-
-            <ul>
-                <li><span>-</span> DRI</li>
-                <li><span>-</span> DRI</li>
-                <li><span>-</span> DRI</li>
-                <li><span>-</span> DRI</li>
-            </ul>
-        </div>
-
 
         <div class="hasOptions">
             <div class="options" id="haveSizes">
@@ -87,10 +84,11 @@
             </div>
             <div class="options">
                 <h3>Egg<span>Count</span></h3>
+
                 <div id="eggCount">
-                    <button type="button">-</button>
-                    <p>1</p>
-                    <button type="button">+</button>
+                    <button class="eggCountBTN minus">−</button>
+                    <span>1</span>
+                    <button class="eggCountBTN plus">+</button>
                 </div>
             </div>
         </div>
@@ -103,35 +101,32 @@
 
     <section class="timerPage hiddenTrue">
 
-        <div class="timer yellowImportant">--:--</div>
+        <div class="timer">--:--</div>
 
         <div class="boilOptions">
             <div id="soft" class="soft boilOption">
-                <img class="soft" src="images/softBoiled.png" alt="">
+                <img class="soft" src="images/softBoiled.png" alt="cartoon style soft boiled egg">
                 <p class="soft">Soft</p>
-                <p class="soft">Boiled</p>
-
             </div>
 
-            <img class="hiddenTrue" id="boilingEggImage" src="images/startCookAnimated.gif" alt="">
+            <img class="hiddenTrue" id="boilingEggImage" src="images/startCookAnimated.gif"
+                alt="cartoon egg cooking in saucepan animated">
 
             <div id="med" class="med boilOption">
-                <img class="med" src="images/medBoiled.png" alt="">
+                <img class="med" src="images/medBoiled.png" alt="cartoon style medium boiled egg">
                 <p class="med">Medium </p>
-                <p class="med">Boiled</p>
             </div>
 
             <div id="hard" class="hard boilOption hiddenfalse">
-                <img class="hard" src="images/hardBoiled.png" alt="">
+                <img class="hard" src="images/hardBoiled.png" alt="cartoon style hard boiled egg">
                 <p class="hard">Hard
-                <p class="hard">Boiled</p>
 
             </div>
         </div>
 
         <footer>
             <div id="cook" class="cook">
-                Let him cook <img src="images/power-button.svg" alt="">
+                Let him cook <img src="images/power-button.svg" alt="powerbutton icon">
             </div>
         </footer>
     </section>
@@ -161,6 +156,17 @@
             <p>Please select desired size for your eggs.</p>
             <div class="popupButtons">
                 <button type="button" id="closeSizePopup">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="donePopup" class="popup hiddenfalse">
+        <div class="popupContent">
+            <img id="eggFinishedIMG" src="images/eggbroFinished.png"
+                alt="cartoon egg with muscles flexing in shorts when timer is done">
+            <p>Your eggs are ready!</p>
+            <div class="popupButtons">
+                <button type="button" id="confirmDone">OK</button>
             </div>
         </div>
     </div>
